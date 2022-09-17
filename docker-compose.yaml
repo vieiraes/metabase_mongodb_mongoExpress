@@ -1,0 +1,52 @@
+version: "3.2"
+
+services:
+
+  metabase:
+    container_name: metabase
+    restart: always
+    image: metabase/metabase
+    env_file:
+      - ./config/metabase.env
+    depends_on:
+      - mongodb
+    networks:
+      - metabase_network
+    ports:
+      - 3000:3000
+
+  mongodb:
+    container_name: mongodb
+    restart: always
+    image: mongo:4.2
+    env_file:
+      - ./config/mongo.env
+    networks:
+      - metabase_network
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+
+
+  mongo-express:
+    container_name: mongo-express
+    restart: always
+    image: mongo-express
+    env_file:
+      - ./config/mongo-express.env
+    ports:
+      - 8081:8081
+    volumes:
+      - ../data:/data/db
+    depends_on:
+      - mongodb
+    networks:
+      - metabase_network
+
+
+
+
+networks:
+  metabase_network:
+    driver: bridge

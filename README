@@ -1,0 +1,36 @@
+
+# Metabase_MongoOnPremise_MongoExpress_Docker
+
+Metabase connected to MongoDB database in On Premise format. Additional an instance of the Mongo Express interface. All in Docker environment.
+
+Metabase conectado ao banco de daos MongoDB em formato On Premise. Adicional uma instância da interface Mongo Express. Tudo em ambiente com Docker.
+
+
+
+## Deployment
+
+to run the application
+
+```bash
+  make up
+```
+
+
+to stop the application
+
+```bash
+  make down
+```
+
+
+to follow the logs
+
+```bash
+  make logs
+```
+
+
+## Authors
+
+- [@vieiraes](https://www.github.com/vieiraes)
+
